@@ -1,5 +1,7 @@
 'use strict';
 
+const co = require('co');
+
 if (typeof $ === 'undefined' && typeof jQuery === 'undefined') {
     throw Error('jQuery not founded');
 }
@@ -25,14 +27,14 @@ const clickKnown = triggerGenerator('.known');
 const clickContinue = triggerGenerator('.continue');
 const progress = document.querySelector('.progress-success');
 
-(async() => {
+co(function*() {
     try {
         while (parseInt(progress.style.width) !== 100) {
-            await clickKnown();
-            await clickContinue();
+            yield clickKnown();
+            yield clickContinue();
         }
-        await clickContinue();
+        yield clickContinue();
     } catch (error) {
-        console.log(`[ERROR] ${error}`);
+        console.log(`[ERROR] ${ error }`);
     }
-})();
+});

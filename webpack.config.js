@@ -1,5 +1,11 @@
 'use strict';
 
+const webpack = require('webpack');
+
+const myPackage = require('./package');
+const banner = `${myPackage.name} ${myPackage.version} - ${myPackage.description}\nCopyright (c) ${ new Date().getFullYear() } ${myPackage.author} - ${myPackage.homepage}\nLicense: ${myPackage.license}`;
+
+
 module.exports = {
     entry: {
         shanbay: './src/index.js'
@@ -15,10 +21,18 @@ module.exports = {
                 loader: 'babel',
                 exclude: /node_modules/,
                 query: {
-                    plugins: ['transform-async-to-generator']
+                    presets: ['es2015']
                 }
             }
         ]
     },
-    devtool: '#source-map'
+    devtool: '#source-map',
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.BannerPlugin(banner)
+    ]
 };
