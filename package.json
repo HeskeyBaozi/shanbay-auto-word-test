@@ -1,0 +1,26 @@
+{
+  "name": "shanbay-auto-word-test",
+  "version": "0.0.0",
+  "description": "shanbay automatically finishing word tests",
+  "main": "./dist/shanbay.build.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=devlopment webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeskeyBaozi/shanbay-auto-word-test.git"
+  },
+  "author": "Heskey He",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HeskeyBaozi/shanbay-auto-word-test/issues"
+  },
+  "homepage": "https://github.com/HeskeyBaozi/shanbay-auto-word-test#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "cross-env": "^3.1.3",
+    "webpack": "^1.13.3"
+  }
+}
